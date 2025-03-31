@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
+import router from "./src/routes/authRoutes";
 
 const app = express();
 
@@ -9,7 +10,9 @@ app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 4000;
+
+app.use("/api", router);
 
 app.get("/", (req, res) => {
   res.send("Welcome to Health Check API!");
